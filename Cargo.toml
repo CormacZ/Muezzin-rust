@@ -1,6 +1,6 @@
 [package]
 name = "muezzin"
-version = "3.0.0"
+version = "1.0.0.0"
 description = "A modern prayer times and Quran application"
 authors = ["CormacZ"]
 edition = "2021"
