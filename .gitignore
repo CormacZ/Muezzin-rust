@@ -1,8 +1,34 @@
+# Electron (old)
 node_modules
-.vscode
-dist
+package-lock.json
+yarn.lock
+
+# Rust
+target/
+Cargo.lock
+**/*.rs.bk
+*.pdb
+
+# Tauri
+.tauri/
+dist/
+gen/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Build artifacts
 flatpak/.flatpak-builder
 flatpak/build
-ressources/quran/downloads
 flatpak-test
-package-lock.json
+
+# Downloads
+ressources/quran/downloads
