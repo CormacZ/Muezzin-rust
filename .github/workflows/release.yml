@@ -97,6 +97,11 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
       - name: Install Rust stable
         uses: dtolnay/rust-toolchain@stable
         with:
@@ -118,6 +123,9 @@ jobs:
             patchelf \
             libasound2-dev \
             libayatana-appindicator3-dev
+
+      - name: Install frontend dependencies
+        run: npm install
 
       - name: Build Tauri app
         uses: tauri-apps/tauri-action@v0
