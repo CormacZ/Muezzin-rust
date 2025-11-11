@@ -132,7 +132,6 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          projectPath: src-tauri
           tagName: ${{ needs.create-release.outputs.version }}
           releaseName: 'Muezzin ${{ needs.create-release.outputs.version }}'
           releaseBody: 'See release notes above'
