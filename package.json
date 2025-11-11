@@ -1,89 +1,37 @@
 {
   "name": "muezzin",
-  "version": "2.6.0",
-  "description": "Prayer Time Caller",
-  "main": "src/main/main.js",
+  "version": "3.0.0",
+  "description": "A modern prayer times and Quran application",
+  "type": "module",
   "scripts": {
-    "start": "electron-forge start",
-    "package": "electron-forge package",
-    "make": "electron-forge make",
-    "dist": "electron-builder",
-    "build": "electron-builder build --linux --win --publish never",
-    "deploy": "electron-builder build --linux --win --publish always"
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "tauri": "tauri",
+    "tauri:dev": "tauri dev",
+    "tauri:build": "tauri build"
   },
-  "icon": "ressources/images/icon.png",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/DBChoco/Muezzin.git"
-  },
-  "keywords": [],
-  "author": "DBChoco <dbchoco.muezzin@gmail.com>",
+  "keywords": [
+    "islamic",
+    "prayer",
+    "adhan",
+    "quran",
+    "salat"
+  ],
+  "author": "CormacZ",
   "license": "MIT",
-  "devDependencies": {
-    "@electron-forge/cli": "^6.0.0-beta.63",
-    "electron": "^25.1.0",
-    "electron-builder": "^24.4.0"
-  },
   "dependencies": {
-    "adhan": "^4.3.1",
-    "auto-launch": "^5.0.5",
-    "bootstrap": "^5.1.3",
-    "bootstrap-dark-5": "^1.1.3",
-    "electron-store": "^8.0.1",
-    "ip-geolocation-api-javascript-sdk": "^1.0.7",
-    "v8-compile-cache": "^2.3.0",
-    "yarn": "^1.22.19"
+    "@tauri-apps/api": "^2.1.0",
+    "@tauri-apps/plugin-notification": "^2.1.0",
+    "@tauri-apps/plugin-dialog": "^2.1.0",
+    "@tauri-apps/plugin-shell": "^2.1.0",
+    "@tauri-apps/plugin-store": "^2.1.0",
+    "@tauri-apps/plugin-autostart": "^2.0.0",
+    "bootstrap": "^5.3.3",
+    "bootstrap-dark-5": "^1.1.3"
   },
-  "build": {
-    "appId": "io.github.dbchoco.muezzin",
-    "publish": [
-      {
-        "provider": "github",
-        "owner": "DBChoco",
-        "repo": "Muezzin"
-      }
-    ],
-    "win": {
-      "icon": "ressources/images/icon-256x256.ico",
-      "target": [
-        "nsis",
-        "portable",
-        "msi"
-      ]
-    },
-    "linux": {
-      "icon": "ressources/images/icon.png",
-      "category": "Utility",
-      "target": [
-        "AppImage",
-        "snap",
-        "tar.gz",
-        "pacman",
-        "deb"
-      ]
-    },
-    "mac": {
-      "icon": "ressources/images/icon.png",
-      "category": "public.app-category.utilities",
-      "target": [
-        "dmg"
-      ]
-    },
-    "snap": {
-      "confinement": "strict",
-      "summary": "Islamic prayer times application",
-      "grade": "stable"
-    },
-    "files": [
-      "**/*",
-      "!screenshots",
-      "!flatpak",
-      "!dist",
-      "!package-lock.json"
-    ]
-  },
-  "bugs": {
-    "url": "https://github.com/DBChoco/Muezzin/issues"
-  },
-  "homepage": "https://github.com/DBChoco/Muezzin"
+  "devDependencies": {
+    "@tauri-apps/cli": "^2.1.0",
+    "vite": "^6.0.0"
+  }
 }
