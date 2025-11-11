@@ -11,6 +11,7 @@ Built with Rust 🦀 + Tauri 2.x ⚡
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 [![Rust Version](https://img.shields.io/badge/rust-1.91+-orange.svg)](https://www.rust-lang.org/)
 [![Tauri](https://img.shields.io/badge/Tauri-2.1-blue)](https://tauri.app/)
+[![Version](https://img.shields.io/badge/version-v1.0.0.0-green)](https://github.com/CormacZ/Muezzin-rust/releases)
 
 [Download](https://github.com/CormacZ/Muezzin-rust/releases) • [Report Bug](https://github.com/CormacZ/Muezzin-rust/issues) • [Request Feature](https://github.com/CormacZ/Muezzin-rust/issues)
 
@@ -18,14 +19,14 @@ Built with Rust 🦀 + Tauri 2.x ⚡
 
 ---
 
-## 🚀 What's New in v3.0
+## 🚀 What's New in v1.0.0.0
 
 This is a **complete rewrite** of Muezzin from Electron to Rust + Tauri 2.x, bringing massive improvements:
 
 ### Performance Gains
 
-| Metric | Electron (v2.6) | Tauri (v3.0) | Improvement |
-|--------|----------------|--------------|-------------|
+| Metric | Electron (Old) | Tauri (New) | Improvement |
+|--------|----------------|-------------|-------------|
 | **Memory Usage (Idle)** | ~15 MB | ~3-5 MB | **3-5x better** |
 | **Binary Size** | ~120 MB | ~10-15 MB | **8-12x smaller** |
 | **Cold Start Time** | ~800ms | ~200-400ms | **2-4x faster** |
@@ -39,6 +40,8 @@ This is a **complete rewrite** of Muezzin from Electron to Rust + Tauri 2.x, bri
 ✅ **Cross-Platform**: Windows, macOS, and Linux support  
 ✅ **Low Resource Usage**: Perfect for older machines or always-running apps  
 ✅ **Open Source**: MIT licensed, fully auditable code  
+
+> **Note**: This remaster uses versioning format **v1.X.X.X** where v1 represents the Rust/Tauri rewrite. We will never jump to v2. See [VERSIONING.md](VERSIONING.md) for details.
 
 ---
 
@@ -96,7 +99,7 @@ Muezzin is a desktop application that helps Muslims keep track of prayer times w
 
 ### Windows
 
-1. Download the `.exe` installer from [Releases](https://github.com/CormacZ/Muezzin-rust/releases)
+1. Download the `.exe` or `.msi` installer from [Releases](https://github.com/CormacZ/Muezzin-rust/releases)
 2. Run the installer
 3. Launch Muezzin
 
@@ -123,15 +126,15 @@ Or download the `.pkg.tar.zst` file from releases.
 
 ```bash
 # Download the .deb file, then:
-sudo apt install ./muezzin_3.0.0_amd64.deb
+sudo apt install ./muezzin_1.0.0.0_amd64.deb
 ```
 
 #### Universal
 
 ```bash
 # AppImage (works on any Linux distro)
-chmod +x Muezzin-3.0.0.AppImage
-./Muezzin-3.0.0.AppImage
+chmod +x Muezzin-1.0.0.0.AppImage
+./Muezzin-1.0.0.0.AppImage
 ```
 
 ---
@@ -146,13 +149,13 @@ chmod +x Muezzin-3.0.0.AppImage
   - **Linux**: `webkit2gtk`, `libayatana-appindicator3-1`
     ```bash
     # Ubuntu/Debian
-    sudo apt install libwebkit2gtk-4.1-dev libayatana-appindicator3-dev
+    sudo apt install libwebkit2gtk-4.1-dev libayatana-appindicator3-dev libasound2-dev
     
     # Fedora
-    sudo dnf install webkit2gtk4.1-devel libappindicator-gtk3-devel
+    sudo dnf install webkit2gtk4.1-devel libappindicator-gtk3-devel alsa-lib-devel
     
     # Arch
-    sudo pacman -S webkit2gtk-4.1 libappindicator-gtk3
+    sudo pacman -S webkit2gtk-4.1 libappindicator-gtk3 alsa-lib
     ```
 
 ### Build Steps
@@ -176,6 +179,38 @@ Built binaries will be in `src-tauri/target/release/bundle/`.
 
 ---
 
+## 📦 Releases & Versioning
+
+Muezzin uses a **four-part versioning scheme**: `v1.X.X.X`
+
+- **v1** = Rust/Tauri remaster (never changes)
+- **X** = Major features
+- **X** = Security/performance fixes
+- **X** = Bug fixes
+
+See [VERSIONING.md](VERSIONING.md) for detailed guidelines.
+
+### Creating a Release
+
+Releases are automatically built via GitHub Actions when you push a tag:
+
+```bash
+# Create and push a tag
+git tag v1.0.0.1
+git push origin main --tags
+```
+
+Or use the helper script:
+
+```bash
+./scripts/release.sh 1.0.0.1
+git push origin main --tags
+```
+
+GitHub Actions will automatically build for Windows, macOS (Intel + Apple Silicon), and Linux!
+
+---
+
 ## 🎯 Roadmap
 
 - [x] Core prayer time calculations
@@ -184,7 +219,8 @@ Built binaries will be in `src-tauri/target/release/bundle/`.
 - [x] Notifications
 - [x] Auto-start on boot
 - [x] Multi-language support
-- [ ] Quran reader (migrating from v2.6)
+- [x] Automated CI/CD releases
+- [ ] Quran reader (migrating from old version)
 - [ ] Mosque mode with custom delays
 - [ ] Manual prayer times
 - [ ] Tasbih counter improvements
