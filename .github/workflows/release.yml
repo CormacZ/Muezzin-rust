@@ -3,11 +3,11 @@ name: Release Build
 on:
   push:
     tags:
-      - 'v1.*.*.*'
+      - 'v1.*.*'
   workflow_dispatch:
     inputs:
       version:
-        description: 'Version to release (e.g., v1.0.0.0)'
+        description: 'Version to release (e.g., v1.0.0)'
         required: true
         type: string
 
@@ -97,12 +97,6 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: '20'
-          cache: 'npm'
-
       - name: Install Rust stable
         uses: dtolnay/rust-toolchain@stable
         with:
@@ -124,9 +118,6 @@ jobs:
             patchelf \
             libasound2-dev \
             libayatana-appindicator3-dev
-
-      - name: Install frontend dependencies
-        run: npm ci
 
       - name: Build Tauri app
         uses: tauri-apps/tauri-action@v0
